@@ -234,8 +234,8 @@ google-chrome $(docker port registry-hello 80)
 ## [Linking Containers Together](https://docs.docker.com/userguide/dockerlinks/)
 
 ```
-docker run --rm --name redis dockerfile/redis
-docker run -it --rm --link redis:server dockerfile/redis bash -c 'redis-cli -h $SERVER_PORT_6379_TCP_ADDR'
+docker run --rm --name redis redis
+docker run -it --rm --link redis:server redis bash -c 'redis-cli -h $SERVER_PORT_6379_TCP_ADDR'
 docker run -it --rm --link redis:redis relateiq/redis-cli
   set hello world
   get hello
@@ -246,7 +246,7 @@ docker run -it --rm --link redis:redis relateiq/redis-cli
 host A (Server):
 
 ```
-docker run -d --name redis dockerfile/redis
+docker run -d --name redis redis
 docker run -d --link redis:redis --name redis_ambassador -p 6379:6379 svendowideit/ambassador
 
 ```
