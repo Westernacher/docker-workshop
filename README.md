@@ -205,6 +205,7 @@ ADD site /usr/share/nginx/html
 ### PUSH Image to a Registry
 
 ```
+docker run -d -p 5000:5000 --name registry registry:latest
 REGISTRY=localhost:5000
 docker tag hello-world $REGISTRY/spiddy/hello-world
 docker push $REGISTRY/spiddy/hello-world
